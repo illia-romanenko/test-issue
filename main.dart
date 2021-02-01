@@ -25,10 +25,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Random _random = new Random();
   Color _color = new Color(0xff555555);
+  double _fontSize = 20;
 
   void _generateRandomColor() {
     setState(() {
       _color = new Color(_random.nextInt(0xffffffff));
+      _fontSize = _random.nextDouble()*20 + 25;
     });
   }
 
@@ -43,7 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
         Center(
           child: Text(
             'Hey there',
-            style: Theme.of(context).textTheme.headline4,
+            style: TextStyle(
+              fontSize: _fontSize,
+              color: Colors.black,
+              decoration: TextDecoration.none
+            ),
           ),
         ),
         GestureDetector(
